@@ -1,0 +1,82 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 2rem;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Bloc pays */
+.pays {
+    background-color: #ffffff;
+    border-left: 8px solid #444;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+.pays h2 {
+    margin: 0 0 1rem;
+    color: #222;
+}
+
+/* Bloc équipe */
+.equipe {
+    background-color: #e3f2fd;
+    border-left: 5px solid #1e88e5;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.equipe h3 {
+    margin-top: 0;
+    color: #0d47a1;
+}
+
+/* Conteneur joueurs */
+.joueurs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Carte joueur */
+.joueur {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-left: 5px solid #43a047;
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    width: calc(25% - 1rem);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out;
+}
+
+.joueur:hover {
+    transform: scale(1.03);
+}
+
+.joueur p {
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+@media screen and (max-width: 900px) {
+    .joueur {
+        width: calc(50% - 1rem);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .joueur {
+        width: 100%;
+    }
+}
