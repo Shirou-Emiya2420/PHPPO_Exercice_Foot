@@ -1,10 +1,10 @@
 <?php
-require_once "Joueur.php";
+require_once "Transphere.php";
 require_once "Pays.php";
 class Equipe{
 
 	private string $_nom;
-	private array $_liste_joueur;
+	private array $_transfere;
 	private DateTime $_annee;
 	private Pays $_pays;
 
@@ -15,14 +15,13 @@ class Equipe{
 		$pays->ajouterEquipe($this);
 	}
 	
-	public function ajouterJoueur(Joueur $joueur){
-		$this->_liste_joueur[] = $joueur;
-		$joueur->ajouterDansEquipe($this);
+	public function ajouterTransphere(Transphere $transphere){
+		$this->_transfere[] = $transphere;
 	}
 	public function affAllJoueur(){
 		$str = "<div><p>" . $this->_nom . "</p><p>" . $this->_pays->getNom() . " - " . $this->_annee->format("Y") . "</p><br>";
-		foreach($this->_liste_joueur as $joueur){
-			$str .= "<p>" . $joueur->getNom() . " " . $joueur->getPrenom() . " " . $joueur->getDateNaissance()->diff($this->_annee)->y . " ans. Pays d'origine : " . $joueur->getNationalite() . "</p><br>";
+		foreach($this->_transfere as $trans){
+			$str .= "<p>" . $trans->getJoueur()->getNom() . " " . $trans->getJoueur()->getPrenom() . " " . $trans->getJoueur()->getDateNaissance()->diff($this->_annee)->y . " ans. Pays d'origine : " . $trans->getJoueur()->getNationalite() . "</p><br>";
 		}
 		$str .= "</div><br>";
 		echo $str . "<br>";
@@ -33,7 +32,7 @@ class Equipe{
 		return $this->_nom;
 	}
 	public function getListeJoueur(): array {
-		return $this->_liste_joueur;
+		return $this->_transfere;
 	}
 	public function getAnnee(): DateTime {
 		return $this->_annee;
@@ -47,7 +46,7 @@ class Equipe{
 		$this->_nom = $nom;
 	}
 	public function setListeJoueur(array $liste): void {
-		$this->_liste_joueur = $liste;
+		$this->_transfere = $liste;
 	}
 	public function setAnnee(DateTime $annee): void {
 		$this->_annee = $annee;

@@ -1,12 +1,12 @@
 <?php
-require_once "Equipe.php";
+require_once "Transphere.php";
 class Joueur{
 
 	private string $_nom;
 	private string $_prenom;
 	private string $_nationalite;
 	private DateTime $_date_naissance;
-	private array $_equipe;
+	private array $_transfere;
 
 	
 	public function __construct(string $nom, string $prenom, DateTime $date_naissance, string $nationalite, DateTime $annee){
@@ -16,13 +16,13 @@ class Joueur{
 		$this->_date_naissance = $date_naissance;
 	}
 
-	public function ajouterDansEquipe(Equipe $equipe){
-		$this->_equipe[] = $equipe;
+	public function ajouterDansTransphere(Transphere $transphere){
+		$this->_transfere[] = $transphere;
 	}
 	public function affAllEquipe(){
 		$str = "<div><p>" . $this->_nom . " " . $this->_prenom . "</p>";
-		foreach($this->_equipe as $equ){
-			$str .= "<p>" . $equ->getNom() . " - " . $equ->getAnnee()->format("Y") . "</p>";
+		foreach($this->_transfere as $equ){
+			$str .= "<p>" . $equ->getEquipe()->getNom() . " - " . $equ->getEquipe()->getAnnee()->format("Y") . "</p>";
 		}
 		$str .= "</div>";
 		echo $str . "<br>";
@@ -40,8 +40,8 @@ class Joueur{
 	public function getDateNaissance(): DateTime {
 		return $this->_date_naissance;
 	}
-	public function getEquipe(): array {
-		return $this->_equipe;
+	public function getTransphere(): array {
+		return $this->_transfere;
 	}
 
 	public function setNom(string $nom): void {
@@ -56,8 +56,8 @@ class Joueur{
 	public function setDateNaissance(DateTime $date): void {
 		$this->_date_naissance = $date;
 	}
-	public function setEquipe(array $equipe): void {
-		$this->_equipe = $equipe;
+	public function setTransphere(array $transphere): void {
+		$this->_transfere = $transphere;
 	}
 }
 
